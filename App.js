@@ -49,8 +49,8 @@ export default function App() {
         
     </View>
       <View style={{flex:1 ,backgroundColor:'red'}}><Image source={require('./interior.jpg')} /></View>
-      <View style={{flex:1 ,backgroundColor:'pink'}}><Text>네번째 칸입니다</Text></View>
-
+      <View style={{flex:1 ,backgroundColor:'pink'}}><Text>랭킹</Text></View>
+<View><Text>카드스타일 상품등록예정</Text></View>
     </View>
   );
 }
