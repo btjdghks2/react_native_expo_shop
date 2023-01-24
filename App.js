@@ -1,87 +1,42 @@
 import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
-import { StyleSheet, Text, View,TextInput, TouchableOpacity, Image } from 'react-native';
+
+import {  View,Text} from 'react-native';
 import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Category } from './component/Category';
+import { SafeAreaView } from 'react-native';
+
+import {Category} from './component/Category.jsx';
+import { MainBtn } from './Home_D/MainBtn';
+import { Search } from './Home_D/Search';
+
+
+
 
 export default function App() {
-  const [text, onChangeText] = useState();
+
 
   const Stack = createNativeStackNavigator();
-  
+
+
   return (
-    
-    <View style={{flex:0.7}}>
+    <View style={{flex:1}}>
             <StatusBar style="auto" />
-      <View style={{flex:0.4 ,backgroundColor:'blue'}}>
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeText}
-        value={text}
-      /></View>
-      <View style={{flex:0.2 ,backgroundColor:'white',flexDirection: "row" , justifyContent:'space-around'}}>    
+      <View style={{flex:0.1 }}><Search/></View>
+      <SafeAreaView>
+      <View style={{flex:0.5 }}>
       <NavigationContainer>
-        <Stack.Screen
-          name="Category"
-          component={Category}
-          options={{title: 'Welcome'}}
-        />
-        
-        
-    </NavigationContainer>
-    <TouchableOpacity onPress={Category} >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>건축자제</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={Category} >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>가구</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={Category} >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>데스크셋</Text>
-          </View>
-        </TouchableOpacity>
-        
+        <Stack.Navigator initalRouteName="MainBtn">
+          <Stack.Screen name="MainBtn" component={MainBtn}/>
+          <Stack.Screen name="Category" component={Category}/>
+        </Stack.Navigator>
+      </NavigationContainer>
+      
+        </View>
+        </SafeAreaView>
+        <View style={{flex:1}}></View>
     </View>
-      <View style={{flex:1 ,backgroundColor:'red'}}><Image source={require('./interior.jpg')} /></View>
-      <View style={{flex:1 ,backgroundColor:'pink'}}><Text>랭킹</Text></View>
-<View><Text>카드스타일 상품등록예정</Text></View>
-    </View>
-  );
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  input: {
-    height: 40,
-    marginTop: 35,
-    marginLeft: 10,
-    marginRight: 10,
-    borderWidth: 1,
-  },
-  button: {
-    width: 100,
-    height: 40,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#2196F3',
-    borderRadius : 15,
+  )
+  }
 
-  },
-  buttonText: {
-    textAlign: 'center',
-    color: 'white',
-    marginTop:2,
-    fontSize: 22,
-  },
-});
