@@ -1,8 +1,8 @@
-import { StatusBar } from 'expo-status-bar';
 
-import {  View,Text} from 'react-native';
+
+import {  View } from 'react-native';
 import 'react-native-gesture-handler';
-import {NavigationContainer} from '@react-navigation/native';
+
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaView } from 'react-native';
 
@@ -20,6 +20,7 @@ export default function App() {
   return (
     <View style={{flex:1}}>
     <SafeAreaView/>
+    <Main_P/>
     </View>
 
   )
